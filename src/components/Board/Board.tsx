@@ -1,5 +1,6 @@
 import React, { useState, useEffect, KeyboardEvent } from 'react'
-import Row from '../Row/Row'
+import './Board.css'
+import Row from '../Row/Row.tsx'
 
 const MAX_ATTEMPTS = 6
 const WORD_LENGTH = 5
@@ -13,11 +14,16 @@ interface Attempt {
     result: LetterStatus[] 
 }
 
+type GameStatus = 'playing' | 'won' | 'lost';
+
 const Board: React.FC = () => {
     const [attempts, setAttempts] = useState<Attempt[]>([])
     const [currentGuess, setCurrentGuess] = useState('')
+    const [gameStatus, setGameStatus] = useState<GameStatus>('playing')
 
     const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+        if (gameStatus !== 'playing') return
+
         const { key } = event
 
         if (key === 'Backspace') {
@@ -51,8 +57,21 @@ const Board: React.FC = () => {
             }
         }
 
-        setAttempts((prev) => [...prev, { guess: guessUper, result: newResult}])
+        const newAttempts = [...attempts, { guess: guessUper, result: newResult}]
+        setAttempts(newAttempts)
         setCurrentGuess('')
+
+        if (guessUper === correctWord) {
+            setGameStatus('won')
+        } else if (newAttempts.length === MAX_ATTEMPTS) {
+            setGameStatus('lost')
+        }
+    }
+
+    const restartGame = () => {
+        setAttempts([])
+        setCurrentGuess('')
+        setGameStatus('playing')
     }
 
     useEffect(() => {
@@ -61,18 +80,31 @@ const Board: React.FC = () => {
     }, [])
 
     return (
-        <div
-        id='board-container'
-        className='board'
-        tabIndex={0}
-        onKeyDown={handleKeyDown}
-        style={{outline: 'none'}}
-        >
+        <div className='game-container'>
+            <div
+            id='board-container'
+            className='board'
+            tabIndex={0}
+            onKeyDown={handleKeyDown}
+            style={{outline: 'none'}}
+            >
             {attempts.map((attempt, index) => (
                 <Row key={index} guess={attempt.guess} result={attempt.result} />
             ))}
             {attempts.length < MAX_ATTEMPTS && (
                 <Row guess={currentGuess} result={[]}/>
+            )}
+            </div>
+            {gameStatus === 'won' && (
+            <div className='message'>
+                <h2>Parabéns! Você acertou a palavra!</h2>
+            </div>
+            )}
+            {gameStatus === 'lost' && (
+            <div className='message'>
+                <h2>Que pena! Você esgotou suas tentativas.</h2>
+                <button onClick={restartGame}>Reiniciar jogo</button>
+            </div>
             )}
         </div>
     )

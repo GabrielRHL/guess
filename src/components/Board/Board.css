@@ -1,0 +1,43 @@
+.board {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    outline: none;
+  }
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .message {
+    text-align: center;
+    color: #d7dadc;
+    background-color: #1a1a1b;
+    padding: 20px;
+    border: 1px solid #3a3a3c;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .message button {
+    margin-top: 10px;
+    background-color: #538d4e;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .message button:hover {
+    background-color: #447a3f;
+  }

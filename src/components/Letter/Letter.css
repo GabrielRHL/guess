@@ -1,0 +1,37 @@
+.letter {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #3a3a3c;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: bold;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+  
+  /* Estado default: caixa vazia ou ainda não preenchida */
+  .letter.default {
+    background-color: #121213;
+    border-color: #3a3a3c;
+  }
+  
+  /* Estado 'correct': a letra está na posição correta */
+  .letter.correct {
+    background-color: #538d4e; /* Verde */
+    border-color: #538d4e;
+  }
+  
+  /* Estado 'present': a letra está na palavra, mas em posição diferente */
+  .letter.present {
+    background-color: #b59f3b; /* Amarelo */
+    border-color: #b59f3b;
+  }
+  
+  /* Estado 'absent': a letra não está na palavra */
+  .letter.absent {
+    background-color: #3a3a3c; /* Cinza escuro */
+    border-color: #3a3a3c;
+  }

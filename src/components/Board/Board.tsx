@@ -1,5 +1,5 @@
 import React, { useState, useEffect, KeyboardEvent } from 'react'
-import Row from '../Row'
+import Row from '../Row/Row'
 
 const MAX_ATTEMPTS = 6
 const WORD_LENGTH = 5
@@ -69,7 +69,7 @@ const Board: React.FC = () => {
         style={{outline: 'none'}}
         >
             {attempts.map((attempt, index) => (
-                <Row key={index} guess={attempts.guess} result={attempts.result} />
+                <Row key={index} guess={attempt.guess} result={attempt.result} />
             ))}
             {attempts.length < MAX_ATTEMPTS && (
                 <Row guess={currentGuess} result={[]}/>

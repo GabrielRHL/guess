@@ -7,8 +7,8 @@ interface KeyboardProps {
 
 const Keyboard: React.FC<KeyboardProps> = ({ onKeyClick }) => {
     const row1 = 'QWERTYUIOP'.split('')
-    const row2 = 'ASDFGHJKL'.split('')
-    const row3 = ['Enter', ...'ZXCVBNM'.split(''), 'Backspace']
+    const row2 = [...'ASDFGHJKL'.split(''), 'Backspace']
+    const row3 = [...'ZXCVBNM'.split(''), 'Enter']
 
     return (
         <div className='keyboard'>
@@ -30,7 +30,7 @@ const Keyboard: React.FC<KeyboardProps> = ({ onKeyClick }) => {
                     onClick={() => onKeyClick(key)}
                     className='key'
                     >
-                        {key}
+                        {key === 'Backspace' ? "⌫" : key}
                     </button>
                 ))}
             </div>
@@ -41,7 +41,7 @@ const Keyboard: React.FC<KeyboardProps> = ({ onKeyClick }) => {
                     onClick={() => onKeyClick(key)}
                     className={`key special ${key.toLowerCase()}`}
                     >
-                        {key === 'Backspace' ? "⌫" : key}
+                        {key}
                     </button>
                 ))}
             </div>

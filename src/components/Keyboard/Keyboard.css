@@ -17,7 +17,7 @@
 .keyboard-row {
   display: flex;
   justify-content: center;
-  gap: 5px;
+  gap: 7px;
 }
 
 .key {

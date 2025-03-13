@@ -3,10 +3,14 @@ import './Board.css'
 import Row from '../Row/Row.tsx'
 import Keyboard from '../Keyboard/Keyboard.tsx'
 
-const MAX_ATTEMPTS = 6
+const MAX_ATTEMPTS = 4
 const WORD_LENGTH = 5
 
-const correctWord = 'REACT'
+const WORDS = [
+    'AMIGO', 'BOLSO', 'CAIXA', 'CARRO', 'CINZA', 'DADOS',
+    'FELIZ', 'GATO', 'JOVEM', 'LIVRO', 'MELÃO', 
+    'PASTO', 'RAPAZ', 'SORTE', 'TIGRE', 'URSO', 'VOTO'
+]
 
 export type LetterStatus = 'correct' | 'present' | 'absent' | 'default'
 
@@ -21,6 +25,16 @@ const Board: React.FC = () => {
     const [attempts, setAttempts] = useState<Attempt[]>([])
     const [currentGuess, setCurrentGuess] = useState('')
     const [gameStatus, setGameStatus] = useState<GameStatus>('playing')
+    const [correctWord, setCorrectWord] = useState('')
+
+    const getRandomWord = () => {
+        const randomIndex = Math.floor(Math.random() * WORDS.length)
+        return WORDS[randomIndex]
+    }
+
+    useEffect(() => {
+        setCorrectWord(getRandomWord())
+    }, [])
 
     const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
         if (gameStatus !== 'playing') return
@@ -73,6 +87,7 @@ const Board: React.FC = () => {
         setAttempts([])
         setCurrentGuess('')
         setGameStatus('playing')
+        setCorrectWord(getRandomWord())
     }
 
     useEffect(() => {

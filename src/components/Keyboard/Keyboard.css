@@ -21,7 +21,7 @@
 }
 
 .key {
-  background-color: #818384;
+  background-color: #434546;
   color: #fff;
   border: none;
   padding: 15px 15px;
@@ -32,8 +32,8 @@
 }
 
 .key.special {
-  background-color: #d3d6da;
-  color: #000;
+  background-color: #E9762B;
+  color: #fff;
   font-weight: bold;
 }
 

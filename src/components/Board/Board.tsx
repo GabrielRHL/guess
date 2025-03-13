@@ -93,7 +93,7 @@ const Board: React.FC = () => {
             {attempts.map((attempt, index) => (
                 <Row key={index} guess={attempt.guess} result={attempt.result} />
             ))}
-            {attempts.length < MAX_ATTEMPTS && (
+            {gameStatus === 'playing' && (
                 <Row guess={currentGuess} result={[]}/>
             )}
             </div>

@@ -3,7 +3,7 @@ import './Board.css'
 import Row from '../Row/Row.tsx'
 import Keyboard from '../Keyboard/Keyboard.tsx'
 
-const MAX_ATTEMPTS = 4
+const MAX_ATTEMPTS = 5
 const WORD_LENGTH = 5
 
 const WORDS = [
@@ -20,10 +20,13 @@ interface Attempt {
 type GameStatus = 'playing' | 'won' | 'lost';
 
 const Board: React.FC = () => {
-    const [attempts, setAttempts] = useState<Attempt[]>([])
+    const [attempts, setAttempts] = useState<Attempt[]>(
+        Array.from({ length: MAX_ATTEMPTS }, () => ({ guess: '', result: []}))
+    )
     const [currentGuess, setCurrentGuess] = useState('')
     const [gameStatus, setGameStatus] = useState<GameStatus>('playing')
     const [correctWord, setCorrectWord] = useState('')
+    const [currentRowIndex, setCurrentRowIndex] = useState(0)
 
     const getRandomWord = () => {
         const randomIndex = Math.floor(Math.random() * WORDS.length)
@@ -70,22 +73,26 @@ const Board: React.FC = () => {
             }
         }
 
-        const newAttempts = [...attempts, { guess: guessUper, result: newResult}]
+        const newAttempts = [...attempts]
+        newAttempts[currentRowIndex] = { guess: guessUper, result: newResult}
         setAttempts(newAttempts)
         setCurrentGuess('')
 
         if (guessUper === correctWord) {
             setGameStatus('won')
-        } else if (newAttempts.length === MAX_ATTEMPTS) {
+        } else if (currentRowIndex === MAX_ATTEMPTS - 1) {
             setGameStatus('lost')
+        } else {
+            setCurrentRowIndex(prev => prev + 1)
         }
     }
 
     const restartGame = () => {
-        setAttempts([])
+        setAttempts(Array(MAX_ATTEMPTS).fill({ guess: '', result: []}))
         setCurrentGuess('')
         setGameStatus('playing')
         setCorrectWord(getRandomWord())
+        setCurrentRowIndex(0)
     }
 
     useEffect(() => {
@@ -104,11 +111,13 @@ const Board: React.FC = () => {
             style={{outline: 'none'}}
             >
             {attempts.map((attempt, index) => (
-                <Row key={index} guess={attempt.guess} result={attempt.result} />
+                <Row 
+                key={index} 
+                guess={index === currentRowIndex ? currentGuess : attempt.guess} 
+                result={index === currentRowIndex ? [] : attempt.result}
+                isActive={index === currentRowIndex && gameStatus === 'playing'}
+                />
             ))}
-            {gameStatus === 'playing' && (
-                <Row guess={currentGuess} result={[]}/>
-            )}
             </div>
             {gameStatus === 'won' && (
             <div className='message'>

@@ -12,26 +12,22 @@
     transition: background-color 0.2s ease, border-color 0.2s ease;
   }
   
-  /* Estado default: caixa vazia ou ainda não preenchida */
   .letter.default {
     background-color: #121213;
     border-color: #3a3a3c;
   }
   
-  /* Estado 'correct': a letra está na posição correta */
   .letter.correct {
-    background-color: #538d4e; /* Verde */
+    background-color: #538d4e;
     border-color: #538d4e;
   }
   
-  /* Estado 'present': a letra está na palavra, mas em posição diferente */
   .letter.present {
-    background-color: #b59f3b; /* Amarelo */
+    background-color: #b59f3b;
     border-color: #b59f3b;
   }
   
-  /* Estado 'absent': a letra não está na palavra */
   .letter.absent {
-    background-color: #3a3a3c; /* Cinza escuro */
+    background-color: #3a3a3c;
     border-color: #3a3a3c;
   }

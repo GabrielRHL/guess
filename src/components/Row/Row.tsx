@@ -18,7 +18,12 @@ const Row: React.FC<RowProps> = ({ guess, result, isActive }) => {
     return (
         <div className={`row ${isActive ? 'active' : 'inactive'}`}>
             {allLetters.map((char, index) => (
-                <Letter key={index} char={char} status={result[index] || 'default'}/>
+                <Letter 
+                key={index} 
+                char={char} 
+                status={result[index] || 'default'}
+                isActive={isActive}
+                />
             ))}
         </div>
     )

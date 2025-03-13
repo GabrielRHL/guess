@@ -9,7 +9,7 @@ const WORD_LENGTH = 5
 const WORDS = [
     'AMIGO', 'BOLSO', 'CAIXA', 'CARRO', 'CINZA', 'DADOS',
     'FELIZ', 'GATO', 'JOVEM', 'LIVRO', 'MELÃO', 
-    'PASTO', 'RAPAZ', 'SORTE', 'TIGRE', 'URSO', 'VOTO'
+    'PASTO', 'RAPAZ', 'SORTE', 'TIGRE',
 ]
 
 export type LetterStatus = 'correct' | 'present' | 'absent' | 'default'

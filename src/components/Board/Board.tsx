@@ -7,9 +7,7 @@ const MAX_ATTEMPTS = 4
 const WORD_LENGTH = 5
 
 const WORDS = [
-    'AMIGO', 'BOLSO', 'CAIXA', 'CARRO', 'CINZA', 'DADOS',
-    'FELIZ', 'GATO', 'JOVEM', 'LIVRO', 'MELÃO', 
-    'PASTO', 'RAPAZ', 'SORTE', 'TIGRE',
+    'AMIGO', 'BOLSO', 'CAIXA', 'CARRO', 'CINZA', 'DADOS','FELIZ', 'JOVEM', 'LIVRO', 'MELÃO', 'PASTO', 'RAPAZ', 'SORTE', 'TIGRE'
 ]
 
 export type LetterStatus = 'correct' | 'present' | 'absent' | 'default'
@@ -115,6 +113,7 @@ const Board: React.FC = () => {
             {gameStatus === 'won' && (
             <div className='message'>
                 <h2>Parabéns! Você acertou a palavra!</h2>
+                <button onClick={restartGame}>Jogar novamente</button>
             </div>
             )}
             {gameStatus === 'lost' && (

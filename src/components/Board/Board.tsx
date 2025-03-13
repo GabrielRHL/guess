@@ -7,7 +7,7 @@ const MAX_ATTEMPTS = 5
 const WORD_LENGTH = 5
 
 const WORDS = [
-    'AMIGO', 'BOLSO', 'CAIXA', 'CARRO', 'CINZA', 'DADOS','FELIZ', 'JOVEM', 'LIVRO', 'MELÃO', 'PASTO', 'RAPAZ', 'SORTE', 'TIGRE'
+    'AMIGO', 'BOLSO', 'CAIXA', 'CARRO', 'CINZA', 'DADOS','FELIZ', 'JOVEM', 'LIVRO', 'PASTO', 'RAPAZ', 'SORTE', 'TIGRE'
 ]
 
 export type LetterStatus = 'correct' | 'present' | 'absent' | 'default'
@@ -103,6 +103,18 @@ const Board: React.FC = () => {
     return (
         <>
         <div className='game-container'>
+        {gameStatus === 'won' && (
+            <div className='message'>
+                <h2>Parabéns! Você acertou a palavra!</h2>
+                <button onClick={restartGame}>Jogar novamente</button>
+            </div>
+        )}
+        {gameStatus === 'lost' && (
+            <div className='message'>
+                <h2>Que pena! Você esgotou suas tentativas.</h2>
+                <button onClick={restartGame}>Reiniciar jogo</button>
+            </div>
+        )}
             <div
             id='board-container'
             className='board'
@@ -119,18 +131,6 @@ const Board: React.FC = () => {
                 />
             ))}
             </div>
-            {gameStatus === 'won' && (
-            <div className='message'>
-                <h2>Parabéns! Você acertou a palavra!</h2>
-                <button onClick={restartGame}>Jogar novamente</button>
-            </div>
-            )}
-            {gameStatus === 'lost' && (
-            <div className='message'>
-                <h2>Que pena! Você esgotou suas tentativas.</h2>
-                <button onClick={restartGame}>Reiniciar jogo</button>
-            </div>
-            )}
         </div>
         <Keyboard onKeyClick={(key) => {
             const event = { key }

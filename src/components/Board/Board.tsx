@@ -1,6 +1,7 @@
 import React, { useState, useEffect, KeyboardEvent } from 'react'
 import './Board.css'
 import Row from '../Row/Row.tsx'
+import Keyboard from '../Keyboard/Keyboard.tsx'
 
 const MAX_ATTEMPTS = 6
 const WORD_LENGTH = 5
@@ -80,6 +81,7 @@ const Board: React.FC = () => {
     }, [])
 
     return (
+        <>
         <div className='game-container'>
             <div
             id='board-container'
@@ -107,6 +109,11 @@ const Board: React.FC = () => {
             </div>
             )}
         </div>
+        <Keyboard onKeyClick={(key) => {
+            const event = { key }
+            handleKeyDown(event as KeyboardEvent<HTMLDivElement>)
+        }}/>
+        </>
     )
 }
 

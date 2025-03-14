@@ -30,6 +30,7 @@
 
 - `React.js`
 - `TypeScript`
+- `JavaScript`
 - `Node.js`
 - `Git/GitHub`
 - `CSS3`

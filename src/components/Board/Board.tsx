@@ -3,7 +3,7 @@ import './Board.css'
 import Row from '../Row/Row.tsx'
 import Keyboard from '../Keyboard/Keyboard.tsx'
 
-const MAX_ATTEMPTS = 5
+const MAX_ATTEMPTS = 6
 const WORD_LENGTH = 5
 
 const WORDS = [

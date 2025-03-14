@@ -6,12 +6,12 @@ export type LetterStatus = 'correct' | 'present' | 'absent' | 'default'
 interface LetterProps {
     char: string
     status: LetterStatus
-    isActive: boolean
+    isActive?: boolean
 }
 
-const Letter: React.FC<LetterProps> = ({ char, status, isActive }) => {
+const Letter: React.FC<LetterProps> = ({ char, status }) => {
     return (
-        <div className={`letter ${status} ${isActive ? 'default' : 'inactive-letter'}`}>
+        <div className={`letter ${status}`}>
             {char}
         </div>
     )

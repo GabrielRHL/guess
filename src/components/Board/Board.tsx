@@ -112,6 +112,7 @@ const Board: React.FC = () => {
         {gameStatus === 'lost' && (
             <div className='message'>
                 <h2>Que pena! Você esgotou suas tentativas.</h2>
+                <p>A palavra correta era: "{correctWord}"</p>
                 <button onClick={restartGame}>Reiniciar jogo</button>
             </div>
         )}

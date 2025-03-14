@@ -50,3 +50,21 @@
   .message button:hover {
     background-color: #c46425;
   }
+
+  @media (max-width: 1300px) {
+    .message {
+      background-color: rgba(58, 58, 58, 0.7);
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .message {
+      background-color: rgba(58, 58, 58, 0.7);
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .message {
+      background-color: rgba(58, 58, 58, 0.7);
+    }
+  }

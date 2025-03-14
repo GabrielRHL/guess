@@ -27,11 +27,15 @@
     padding: 10px 20px;
     border-radius: 8px;
     text-align: center;
+
+    & h2 {
+      font-weight: 500;
+    }
   }
   
   .message button {
     margin-top: 10px;
-    background-color: #538d4e;
+    background-color: #E9762B;
     border: none;
     color: #fff;
     padding: 10px 20px;
@@ -42,5 +46,5 @@
   }
   
   .message button:hover {
-    background-color: #447a3f;
+    background-color: #c46425;
   }

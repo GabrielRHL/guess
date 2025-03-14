@@ -7,7 +7,10 @@ const MAX_ATTEMPTS = 5
 const WORD_LENGTH = 5
 
 const WORDS = [
-    'AMIGO', 'BOLSO', 'CAIXA', 'CARRO', 'CINZA', 'DADOS','FELIZ', 'JOVEM', 'LIVRO', 'PASTO', 'RAPAZ', 'SORTE', 'TIGRE'
+    'AMIGO', 'BOLSO', 'CAIXA', 'CARRO', 'CINZA', 'DADOS', 'FELIZ', 
+    'JOVEM', 'LIVRO', 'VALOR', 'RAPAZ', 'SORTE', 'TIGRE', 'PLENO',
+    'NADAR', 'NOBRE', 'PODER', 'IDEIA', 'MORAL', 'JUSTO', 'ANEXO',
+    'CASAL', 'COMUM', 'DIGNO', 'ARROZ', 'MUNDO', 'LOUCO', 'FALSO' 
 ]
 
 export type LetterStatus = 'correct' | 'present' | 'absent' | 'default'

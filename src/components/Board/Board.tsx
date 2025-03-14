@@ -124,10 +124,10 @@ const Board: React.FC = () => {
             >
             {attempts.map((attempt, index) => (
                 <Row 
-                key={index} 
-                guess={index === currentRowIndex ? currentGuess : attempt.guess} 
-                result={index === currentRowIndex ? [] : attempt.result}
-                isActive={index === currentRowIndex && gameStatus === 'playing'}
+                key={index}
+                guess={ (index === currentRowIndex && gameStatus === 'playing') ? currentGuess : attempt.guess }
+                result={ (index === currentRowIndex && gameStatus === 'playing') ? [] : attempt.result }
+                isActive={ (index === currentRowIndex && gameStatus === 'playing') }
                 />
             ))}
             </div>

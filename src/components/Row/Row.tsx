@@ -22,7 +22,6 @@ const Row: React.FC<RowProps> = ({ guess, result, isActive }) => {
                 key={index} 
                 char={char} 
                 status={result[index] || 'default'}
-                isActive={isActive}
                 />
             ))}
         </div>

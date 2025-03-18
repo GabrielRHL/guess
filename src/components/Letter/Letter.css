@@ -1,4 +1,4 @@
-.letter {
+  .letter {
     width: 60px;
     height: 60px;
     border: 2px solid #3a3a3c;
@@ -30,4 +30,11 @@
   .letter.absent {
     background-color: #3a3a3c;
     border-color: #3a3a3c;
+  }
+
+  @media (max-width: 500px) {
+    .letter {
+      width: 50px;
+      height: 50px;
+    }
   }
